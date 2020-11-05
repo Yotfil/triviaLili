@@ -278,13 +278,13 @@ const fnPreguntas = () => {
         let infoPreguntas = `
             <div class="dinamico">
                 <div class="quest">
-                <p class="sub">Test ¿Estás preparada para la llegada de tu bebé?</p>
+                <p class="sub" >Test ¿Estás preparada para la llegada de tu bebé?</p>
                 <div class="container">
-                    <div class="question">${pregunta.pregunta}</div>
+                    <div class="question" data-index="${index}">${pregunta.pregunta}</div>
                     <div class="buttons">
-                        ${fnOpciones(pregunta.respuestas.aleatorio())}
+                    ${fnOpciones(pregunta.respuestas)}
                     </div>
-                    <div class="answer">
+                    <div class="answer hide">
                         <p class="right">Respuesta: <span class="right__text">${respuestaCorrecta(pregunta.respuestas)}</span></p>
                         <p class="exp">${pregunta.explicacion}</p>
                     </div>
@@ -319,6 +319,70 @@ Array.prototype.aleatorio = function() {
     return this;
 }
 
+
+
 /* Ejecución de funciones */
 render()
 
+
+/* Bloque de código para validar la respuesta correcta. Debe ejecutarse todo al final ya que hay que esperar que renderice todo primero */
+
+/* Llamado de elementos al DOM */
+const options = document.querySelectorAll('.options')
+console.log(options)
+
+/* Función */
+
+/* Función para buscar padre */
+const buscarPadre = (respuesta) => {
+    return respuesta.closest('.container')
+}
+
+/* Función mostrar respuesta */
+const mostrarRespuesta = (respuesta) => {
+    const answer = buscarPadre(respuesta).querySelector('.answer')
+    answer.classList.remove('hide')
+    setTimeout(()=>{
+        answer.classList.add('show')
+    }, 300)
+}
+
+/* Función para validar que no haya más respuestas */
+const noHayRespuestas = (options) => {
+    let hayRespuesta = false
+    options.forEach(option => {
+        if(option.classList.contains('error') || option.classList.contains('correct')){
+            hayRespuesta = true
+            option.getAttribute("disabled")
+        }
+    })
+    return hayRespuesta
+}
+
+/* Función para validar si la respuesta es correcta o no */
+const validarRespuesta = (e) => {
+    console.log(e.target)
+    const respuesta = e.target
+    const question = buscarPadre(respuesta).querySelector('.question')
+    const respuestaCorrecta = preguntas[question.dataset.index].respuestas[respuesta.dataset.index].correct
+    const options = buscarPadre(respuesta).querySelectorAll('.options')
+
+    const hayRespuesta = noHayRespuestas(options)
+
+    if(!respuestaCorrecta && !hayRespuesta){
+        respuesta.classList.add('error')
+        mostrarRespuesta(respuesta)
+    }else if(respuestaCorrecta && !hayRespuesta){
+        respuesta.classList.add('correct')
+        mostrarRespuesta(respuesta)
+    }else{
+        swal("Hey!","Solo una respuesta por pregunta", "error");
+    }
+
+}
+
+/* Ejecución de la función */
+options.forEach(option => {
+    option.addEventListener('click', validarRespuesta)
+
+})
