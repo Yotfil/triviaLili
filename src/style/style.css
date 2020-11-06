@@ -355,7 +355,7 @@ body {
 }
 
 .link3 {
-	background-color: var(--main-color);
+	color: var(--main-color);
 	padding-bottom: 5px;
 }
 .link3:visited {
