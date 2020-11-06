@@ -20,16 +20,19 @@ body {
 	margin: auto;
 	flex-direction: column;
 }
-/* .render {
+.render {
 	position: relative;
 	width: 100%;
-} */
+}
 .dinamico {
-	/* position: absolute; */
+	top: 0;
+	left: 0;
+	position: absolute;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	width: 100%;
+	opacity: 0;
 }
 .quest {
 	width: 58%;
@@ -54,18 +57,17 @@ body {
 }
 .question {
 	color: var(--main-color);
-	font-size: 30px;
+	font-size: 25px;
 	font-weight: 200;
-	margin-bottom: 30px;
+	margin-bottom: 15px;
 }
 .buttons {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	flex-wrap: wrap;
-	margin-bottom: 30px;
+	margin-bottom: 15px;
 	position: relative;
-	padding: 10px;
 }
 
 .options {
@@ -109,6 +111,7 @@ body {
 	line-height: 1.3;
 	letter-spacing: 0.2px;
 	opacity: 0;
+	font-size: 14px;
 }
 .right__text {
 	color: var(--main-color);
@@ -191,4 +194,187 @@ body {
 .show {
 	opacity: 1;
 	transition: all 0.3s ease-in-out;
+}
+.hideQuestion {
+	opacity: 0;
+	transform: translateX(50%);
+	transition: all 0.5s ease-in-out;
+}
+
+/* Clases intro */
+.subIntro {
+	color: var(--main-color);
+	margin-bottom: 60px;
+}
+.introQuest {
+	padding: 50px 200px 50px 40px;
+	align-items: flex-start;
+}
+.logo {
+	width: 300px;
+	padding-left: 60px;
+	margin-bottom: 40px;
+}
+.introPregunta {
+	color: var(--main-color);
+	font-size: 24px;
+	font-weight: 300;
+	padding-left: 60px;
+	margin-bottom: 40px;
+}
+.introTexto {
+	margin-bottom: 40px;
+	font-size: 14px;
+	color: var(--main-color);
+	padding-left: 60px;
+}
+.peso {
+	font-weight: 600;
+}
+.btnIntro {
+	width: 48%;
+	margin: 15px 0;
+	padding: 15px 10px;
+	border-radius: 50px;
+	border: 1px solid var(--main-color);
+	background-color: var(--main-color);
+	cursor: pointer;
+	font-size: 14px;
+	color: white;
+	position: relative;
+	overflow: hidden;
+	margin-left: 60px;
+}
+.btnIntro::before {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	height: 100%;
+	width: 0;
+	transform: translateX(-50%);
+	background-color: rgba(137, 137, 137, 0.126);
+	content: "";
+	transition: all 0.1s ease-in-out;
+}
+
+.btnIntro:hover::before {
+	width: 100%;
+	transition: all 0.3s ease-in-out;
+}
+
+.btnIntro:active {
+	background-color: #106aa2;
+}
+.intro {
+	top: 0;
+	left: 0;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+/* Clases resultado */
+.despedida {
+	font-size: 48px;
+	margin: 50px 0;
+}
+.resultadoTexto {
+	padding: 0;
+	font-size: 16px;
+	text-align: center;
+}
+.hideResultado {
+	opacity: 0;
+}
+.resultado {
+	background-color: var(--main-color);
+	padding: 60px;
+	/* position: absolute; */
+	width: 100%;
+}
+.bg {
+	background: url(../assets/Test-LiliUmana-Fondo-de-resultado.jpg) center
+		no-repeat;
+	background-size: cover;
+	border-radius: 20px;
+	padding: 40px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.btnResultado {
+	margin-top: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.link1,
+.link2,
+.link3 {
+	text-decoration: none;
+	position: relative;
+}
+.link1,
+.link2 {
+	padding: 6px;
+	border-radius: 4px;
+	margin: 0 10px 20px;
+	transition: all 0.1s ease-in-out;
+}
+.link1,
+.link2 {
+	color: var(--main-color);
+}
+.link1:hover,
+.link2:hover {
+	box-shadow: 0 3px 8px rgb(176, 176, 176);
+	transition: all 0.1s ease-in-out;
+}
+.link1 {
+	background-color: white;
+	border: 1px solid var(--main-color);
+}
+.link2 {
+	color: white;
+	background-color: var(--main-color);
+}
+
+.link3 {
+	padding-bottom: 5px;
+}
+
+.link1::before,
+.link2::before,
+.link3::before {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	height: 2px;
+	width: 0;
+	transform: translateX(-50%);
+	background-color: var(--main-color);
+	content: "";
+	transition: all 0.1s ease-in-out;
+}
+.link1::before,
+.link2::before {
+	height: 100%;
+	background-color: rgba(137, 137, 137, 0.126);
+}
+
+.link1:hover::before,
+.link2:hover::before {
+	width: 100%;
+	transition: all 0.3s ease-in-out;
+}
+.link3:hover::before {
+	width: 120%;
+	transition: all 0.3s ease-in-out;
+}
+.showResultado {
+	opacity: 1;
+	transition: all 1s ease-in-out;
 }

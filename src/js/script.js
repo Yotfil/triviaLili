@@ -240,15 +240,12 @@ const preguntas =[
     },
 ]
 
+/* Bloque de código para renderizar las preguntas  */
 
 /* Llamados a los objetos del DOM, de uso global */
 const divRender = document.getElementById('render')
 
-
 /* Funciones */
-
-
-
 
 /* Función que recorre cada una de las opciones de cada pregunta para poder renderizarlas */
 const fnOpciones = (opciones) => {
@@ -273,10 +270,12 @@ const respuestaCorrecta = (opciones) => {
 }
 
 /* Función que recorre cada uno de los objetos del array "preguntas" creando el template para poder renderizarlos */
+
+
 const fnPreguntas = () => {
     let arrayPreguntas = preguntas.aleatorio().map((pregunta, index) =>{
         let infoPreguntas = `
-            <div class="dinamico">
+            <div class="dinamico" data-index="${index+1}">
                 <div class="quest">
                 <p class="sub" >Test ¿Estás preparada para la llegada de tu bebé?</p>
                 <div class="container">
@@ -299,7 +298,8 @@ const fnPreguntas = () => {
             </div>
         `
     return infoPreguntas
-    }).join("")
+    }).reverse().join("")
+    /* Tuve que revertir el array debido a que cuando les doy posición absoluta a los elementos la pregunta 10 al ser la última en rederizarse pasa a ser la primera */
     return arrayPreguntas
 }
 
@@ -329,13 +329,12 @@ render()
 
 /* Llamado de elementos al DOM */
 const options = document.querySelectorAll('.options')
-console.log(options)
 
 /* Función */
 
 /* Función para buscar padre */
 const buscarPadre = (respuesta) => {
-    return respuesta.closest('.container')
+    return respuesta.closest('.dinamico')
 }
 
 /* Función mostrar respuesta */
@@ -353,32 +352,47 @@ const noHayRespuestas = (options) => {
     options.forEach(option => {
         if(option.classList.contains('error') || option.classList.contains('correct')){
             hayRespuesta = true
-            option.getAttribute("disabled")
         }
     })
+    /* Descomentar las siguientes líneas si quieren desabilitar los botones en vez de que aparezca el alert */
+    // options.forEach(option => {
+    //     option.setAttribute('disabled', 'disabled')
+    // })
     return hayRespuesta
 }
 
 /* Función para validar si la respuesta es correcta o no */
+let contadorRespuestasCorrectas = 5
+
 const validarRespuesta = (e) => {
-    console.log(e.target)
     const respuesta = e.target
     const question = buscarPadre(respuesta).querySelector('.question')
     const respuestaCorrecta = preguntas[question.dataset.index].respuestas[respuesta.dataset.index].correct
     const options = buscarPadre(respuesta).querySelectorAll('.options')
-
     const hayRespuesta = noHayRespuestas(options)
-
     if(!respuestaCorrecta && !hayRespuesta){
         respuesta.classList.add('error')
         mostrarRespuesta(respuesta)
     }else if(respuestaCorrecta && !hayRespuesta){
         respuesta.classList.add('correct')
         mostrarRespuesta(respuesta)
+        contadorRespuestasCorrectas += 1
+
     }else{
+        respuesta.setAttribute('disabled', 'disabled')
+        /*
+        Modificar el mensaje del alert acá
+            "Mensaje en negritas", "Mensaje largo", "Icono*"
+            *se pueden usar los siguientes mensajes:
+                -error (sale una x)
+                -success (sale un chulito)
+                -info (sale signo admiración apertura)
+                -warning (sale signo admiración cierre)
+            más info, documentación sweet alert:
+                https://sweetalert.js.org/guides/#installation
+        */
         swal("Hey!","Solo una respuesta por pregunta", "error");
     }
-
 }
 
 /* Ejecución de la función */
@@ -386,3 +400,116 @@ options.forEach(option => {
     option.addEventListener('click', validarRespuesta)
 
 })
+
+
+/* Bloque de código para pasar a la siguiente pregunta */
+
+/* Obtener objetos de uso global del DOM */
+const btnsSiguiente = document.querySelectorAll('.next')
+const resultado = document.getElementById('resultado')
+
+
+/* Función para pasar a la siguiente pregunta */
+const siguientePregunta = (e) => {
+    const btnSiguiente = e.target
+    const padre = buscarPadre(btnSiguiente)
+    const options = buscarPadre(padre).querySelectorAll('.options')
+    const dinamico = document.querySelectorAll('.dinamico')
+    if(noHayRespuestas(options)){
+        padre.classList.add('hideQuestion')
+        setTimeout(()=>{
+            padre.classList.add('hide')
+        }, 500)
+        /* Para obtener la siguiente pregunta tomé la posición actual del elemento alojado en el data-index, para traer todo el array con las preguntas y decirle que me devuelva el último elemento basado en la posición del elemento actual, esto se hace así, dado que tuve que revertir el orden del array en la función de render */
+        const posicion = parseInt(padre.dataset.index)+1
+        let siguiente = dinamico[dinamico.length-posicion]
+        if(siguiente == undefined){
+            resultado.classList.remove('hide')
+            setTimeout(()=>{
+                resultado.classList.add('showResultado')
+            }, 500)
+            moverContador = true
+        }else{
+            siguiente.classList.add('show')
+
+        }
+
+    }else{
+        swal('¡Espera!', 'Debes responder la pregunta', 'warning')
+    }
+}
+
+/* Ejecución de la función */
+btnsSiguiente.forEach(btn => {
+    btn.addEventListener('click', siguientePregunta)
+})
+
+
+
+/* Este bloque de texto inicia el test, es el intro */
+
+/* Elementos globales del DOM */
+const btnInicio = document.getElementById('btnInicio')
+
+/* Función y ejecución */
+btnInicio.addEventListener('click', () => {
+    const padre = btnInicio.closest('.render')
+    padre.classList.add('hideQuestion')
+    setTimeout(() => {
+        padre.classList.add('hide')
+    }, 500)
+
+    const dinamico = document.querySelectorAll('.dinamico')
+    dinamico[dinamico.length-1].classList.add('show')
+    // dinamico.forEach(dim => {
+    //     dim.classList.add('show')
+    // })
+})
+
+
+
+
+
+
+
+
+
+
+        animateprogress(contadorRespuestasCorrectas*10);
+
+
+
+
+
+function animateprogress (val){
+
+
+    var getRequestAnimationFrame = function () {  /* <------- Declaro getRequestAnimationFrame intentando obtener la máxima compatibilidad con todos los navegadores */
+        return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function ( callback ){
+            window.setTimeout(enroute, 1 / 60 * 1000);
+        };
+
+    };
+
+    var fpAnimationFrame = getRequestAnimationFrame();   /* <--- Declaro una instancia de getRequestAnimationFrame para llamar a la función animación */
+    var i = 0;
+    var animacion = function () {
+
+    if (i<=val)
+        {
+            document.getElementById("resultados").setAttribute("value",i);      /* <----  Incremento el valor de la barra de progreso */
+            document.getElementById("numero").innerHTML = i+"%";     /* <---- Incremento el porcentaje y lo muestro en la etiqueta span */
+            i++;
+            fpAnimationFrame(animacion);          /* <------------------ Mientras que el contador no llega al porcentaje fijado la función vuelve a llamarse con fpAnimationFrame     */
+        }
+
+    }
+
+        fpAnimationFrame(animacion);   /*  <---- Llamo la función animación por primera vez usando fpAnimationFrame para que se ejecute a 60fps  */
+
+}
