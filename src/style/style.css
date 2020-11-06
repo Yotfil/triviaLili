@@ -355,7 +355,14 @@ body {
 }
 
 .link3 {
+	background-color: var(--main-color);
 	padding-bottom: 5px;
+}
+.link3:visited {
+	background-color: var(--main-color);
+}
+.link3:active {
+	background-color: var(--main-color);
 }
 
 .link1::before,
