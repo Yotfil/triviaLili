@@ -276,9 +276,9 @@ const fnPreguntas = () => {
     let arrayPreguntas = preguntas.aleatorio().map((pregunta, index) =>{
         let infoPreguntas = `
             <div class="dinamico" data-index="${index+1}">
-                <div class="quest">
+                <article class="quest">
                     <p class="sub" >Test ¿Estás preparada para la llegada de tu bebé?</p>
-                    <div class="container">
+                    <section class="container">
                         <div class="question" data-index="${index}">${pregunta.pregunta}</div>
                         <div class="buttons">
                         ${fnOpciones(pregunta.respuestas)}
@@ -287,15 +287,15 @@ const fnPreguntas = () => {
                         <p class="right">Respuesta: <span class="right__text">${respuestaCorrecta(pregunta.respuestas)}</span></p>
                         <p class="exp">${pregunta.explicacion}</p>
                         </div>
-                        </div>
+                    </section>
                     <div class="numberCel"><span class="index">${index + 1}</span>/10</div>
                     <button class="next"> Siguiente <img src="./src/assets/right-arrow.svg" alt="" class="arrow"> </button>
-                </div>
-                <div class="image">
+                </article>
+                <figure class="image">
                     <img src="${pregunta.urlImage}"
                         alt="mujer embarazada" class="pic">
                     <div class="number"><span class="index">${index + 1}</span>/10</div>
-                </div>
+                </figure>
             </div>
         `
     return infoPreguntas

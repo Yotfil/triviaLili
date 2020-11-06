@@ -14,8 +14,8 @@
 
     <body>
 
-        <div class="main" id="main">
-            <div class="render hide hideResultado" id="resultado">
+        <main class="main" id="main">
+            <section class="render hide hideResultado" id="resultado">
                 <div class="resultado">
                     <div class="bg">
                         <img src="./src/assets/Logo LiliUmana.png" alt="" class="logo logoResultado">
@@ -41,13 +41,14 @@
                         <a href="" class="link3" id="volver">Volver</a>
                     </div>
                 </div>
-            </div>
+            </section>
+            <!-- Acá en este div se renderizan todas las preguntas -->
+            <section class="render" id="render">
+            </section>
 
-            <div class="render" id="render">
-            </div>
-            <div class="render" id="intro">
+            <secction class="render" id="intro">
                 <div class="intro">
-                    <div class="quest introQuest">
+                    <article class="quest introQuest">
                         <p class="sub subIntro">Introducción</p>
                         <img src="./src/assets/Logo LiliUmana.png" alt="logo LiliUmana" class="logo">
                         <p class="introPregunta">
@@ -58,14 +59,14 @@
                             Laboriosam eaque eum et saepe in cum explicabo.
                         </p>
                         <button class="btnIntro" id="btnInicio">Iniciar Test</button>
-                    </div>
-                    <div class="image">
+                    </article>
+                    <figure class="image">
                         <img src="./src/assets/IntroTest-Lili-Estas-preparada-para-la-llegada-de-tu-bebe.jpg"
                             alt="mujer embarazada" class="pic">
-                    </div>
+                    </figure>
                 </div>
-            </div>
-        </div>
+            </secction>
+        </main>
 
         <script src="./src/js/script.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
