@@ -106,8 +106,6 @@ body {
 }
 .options:hover {
 	transition: all 0.3s ease-in-out;
-	background-color: transparent;
-	font-weight: 500;
 }
 .options:hover::before {
 	width: 100%;
@@ -357,6 +355,10 @@ body {
 .link3 {
 	color: var(--main-color);
 	padding-bottom: 5px;
+	border: none;
+	background-color: transparent;
+	font-size: 16px;
+	cursor: pointer;
 }
 .link3:visited {
 	color: var(--main-color);

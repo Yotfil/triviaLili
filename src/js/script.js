@@ -1,3 +1,5 @@
+
+
 /* Objeto con todas las preguntas */
 const preguntas =[
     {
@@ -21,7 +23,7 @@ const preguntas =[
             }
         ],
         explicacion: 'Los pezones no tienen leche, la leche está en la aréola. Debes prepararte psicológicamente para todo lo que te digan, siempre vas a escuchar comentarios que no necesitas.',
-        urlImage: './src/assets/Test-Lili-Pregunata-uno-Si-tienes-pezones-planos....jpg'
+        urlImage: './src/assets/Test-Lili-Pregunata-uno-Si-tienes-pezones-planos.jpg'
     },
     {
         pregunta:'¿Cuantos pañales debe orinar el bebe al segundo día de nacido?',
@@ -71,7 +73,7 @@ const preguntas =[
             }
         ],
         explicacion: 'El piel a piel (skin to skin) es el mejor momento para lograr que los bebés inician “solos” el proceso de lactancia materna y se encuentren con su madre: a la que conocen intrauterinamente y ahora deben reconocerla extrauterinamente. También es un momento donde la madre se siente tranquila y confiada de tener al bebe a su lado.',
-        urlImage: './src/assets/Test-Lili-Pregunata-tres-El-piel-a-piel-es-un-momento-en-el-que….jpg'
+        urlImage: './src/assets/Test-Lili-Pregunata-tres-El-piel-a-piel-es-un-momento-en-el-que.jpg'
     },
     {
         pregunta:'¿La cesárea influye en que no tenga buena bajada de leche?',
@@ -117,7 +119,7 @@ const preguntas =[
             },
         ],
         explicacion: 'El papá debe estár durante todo el proceso de lactancia para ayudar a la madre. Dar un tetero no es la mejor opción en lactancia.',
-        urlImage: './src/assets/Test-Lili-Pregunata-cinco-El-padre-cumple-un-papel-fundamental-en-la-lactancia-por-que-…..jpg'
+        urlImage: './src/assets/Test-Lili-Pregunata-cinco-El-padre-cumple-un-papel-fundamental-en-la-lactancia-por-que.jpg'
     },
     {
         pregunta:'Si el bebé debe quedar en la unidad de recién nacidos...',
@@ -140,7 +142,7 @@ const preguntas =[
             }
         ],
         explicacion: 'La producción de calostro y leche es un estímulo y el cuerpo debe tener de día y de noche. Si no estás con él bebé debes extraerte todo el tiempo posible y aprender cómo darle esa leche con dispositivos diferentes al tetero.',
-        urlImage: './src/assets/Test-Lili-Pregunata-seis-Si-el-bebé-debe-quedar-en-la-unidad-de-recién-nacidos....jpg'
+        urlImage: './src/assets/Test-Lili-Pregunata-seis-Si-el-bebé-debe-quedar-en-la-unidad-de-recién-nacidos.jpg'
     },
     {
         pregunta:'Entre el día 3 y 5 la madre observa que el bebé...',
@@ -163,7 +165,7 @@ const preguntas =[
             }
         ],
         explicacion: 'El bebé mama mucho en las noches para ayudar al proceso de bajada de la leche y así aumentar de peso, esto gracias a la Prolactina que es una hormona nocturna.',
-        urlImage: './src/assets/Test-Lili-Pregunata-siete-Entre-el-día-3-y-5-la-madre-observa-que-el-bebé....jpg'
+        urlImage: './src/assets/Test-Lili-Pregunata-siete-Entre-el-día-3-y-5-la-madre-observa-que-el-bebé.jpg'
     },
     {
         pregunta:'Un signo de deshidratación del bebé es...',
@@ -190,7 +192,7 @@ const preguntas =[
             }
         ],
         explicacion: 'Los recién nacidos no solo “duermen y comen”. Por eso debemos despertarlos y estimularlos frecuentemente para que coman, ya que las gotas de calostro que toman son muy pocas y necesitamos que estén constantemente pegados y succionando: haciendo lo que mejor saben hacer.',
-        urlImage: './src/assets/Test-Lili-Pregunata-ocho-Un-signo-de-deshidratación-del-bebé-es....jpg'
+        urlImage: './src/assets/Test-Lili-Pregunata-ocho-Un-signo-de-deshidratación-del-bebé-es.jpg'
     },
     {
         pregunta:'Al nacer los bebés pierden...',
@@ -213,7 +215,7 @@ const preguntas =[
             }
         ],
         explicacion: '¡Esto debe ser súper riguroso!  ES NORMAL QUE PIERDAN PESO PERO NO DEBEN PERDER MÁS DEL 10%.',
-        urlImage: './src/assets/Test-Lili-Pregunata-nueve-Al-nacer-los-bebés-pierden....jpg'
+        urlImage: './src/assets/Test-Lili-Pregunata-nueve-Al-nacer-los-bebés-pierden.jpg'
     },
     {
         pregunta:'Durante el embarazo debes prepararte para la lactancia...',
@@ -236,11 +238,11 @@ const preguntas =[
             }
         ],
         explicacion: 'Cuando nos dicen que estamos embarazadas y pensamos en todo lo que necesitamos está afuera, pero en la lactancia no necesitas nada de afuera. Necesitas tu grupo familiar, tu conocimiento, aclarar tus miedos y tus desafíos propios, eso es la lactancia, prepararte y preparar a la familia para los nuevos retos.',
-        urlImage: './src/assets/Test-Lili-Pregunata-diez-Durante-el-embarazo-debes-prepararte-para-la-lactancia....jpg'
+        urlImage: './src/assets/Test-Lili-Pregunata-diez-Durante-el-embarazo-debes-prepararte-para-la-lactancia.jpg'
     },
 ]
 
-/* Bloque de código para renderizar las preguntas  */
+/*********************** Bloque de código para renderizar las preguntas  ********************/
 
 /* Llamados a los objetos del DOM, de uso global */
 const divRender = document.getElementById('render')
@@ -248,15 +250,15 @@ const divRender = document.getElementById('render')
 /* Funciones */
 
 /* Función que recorre cada una de las opciones de cada pregunta para poder renderizarlas */
-const fnOpciones = (opciones) => {
-    let arrayOpciones = opciones.map((opcion, index) => {
+const fnOpciones = (opciones) =>
+    opciones
+        .map((opcion, index) => {
         let infoOpciones = `
         <button class="options" data-index="${index}">${opcion.respuesta}</button>
         `
         return infoOpciones
-    }).join("")
-    return arrayOpciones
-}
+    }).join('');
+
 
 /* Función que devuelve la respuesta correcta para pintarla*/
 const respuestaCorrecta = (opciones) => {
@@ -267,46 +269,6 @@ const respuestaCorrecta = (opciones) => {
         }
     })
     return respuesta
-}
-
-/* Función que recorre cada uno de los objetos del array "preguntas" creando el template para poder renderizarlos */
-
-
-const fnPreguntas = () => {
-    let arrayPreguntas = preguntas.aleatorio().map((pregunta, index) =>{
-        let infoPreguntas = `
-            <div class="dinamico" data-index="${index+1}">
-                <article class="quest">
-                    <p class="sub" >Test ¿Estás preparada para la llegada de tu bebé?</p>
-                    <section class="container">
-                        <div class="question" data-index="${index}">${pregunta.pregunta}</div>
-                        <div class="buttons">
-                        ${fnOpciones(pregunta.respuestas)}
-                        </div>
-                        <div class="answer hide">
-                        <p class="right">Respuesta: <span class="right__text">${respuestaCorrecta(pregunta.respuestas)}</span></p>
-                        <p class="exp">${pregunta.explicacion}</p>
-                        </div>
-                    </section>
-                    <div class="numberCel"><span class="index">${index + 1}</span>/10</div>
-                    <button class="next"> Siguiente <img src="./src/assets/right-arrow.svg" alt="" class="arrow"> </button>
-                </article>
-                <figure class="image">
-                    <img src="${pregunta.urlImage}"
-                        alt="mujer embarazada" class="pic">
-                    <div class="number"><span class="index">${index + 1}</span>/10</div>
-                </figure>
-            </div>
-        `
-    return infoPreguntas
-    }).reverse().join("")
-    /* Tuve que revertir el array debido a que cuando les doy posición absoluta a los elementos la pregunta 10 al ser la última en rederizarse pasa a ser la primera */
-    return arrayPreguntas
-}
-
-/* Función encargada de renderizar en pantalla todos los elementos */
-const render = () => {
-    divRender.innerHTML = fnPreguntas()
 }
 
 /* Método para volver aleatorio un array  */
@@ -321,22 +283,73 @@ Array.prototype.aleatorio = function() {
 }
 
 
+/* Función que recorre cada uno de los objetos del array "preguntas" creando el template para poder renderizarlos */
+
+
+const fnPreguntas = () =>
+    preguntas
+        .aleatorio()
+        .map(
+            (pregunta, index) => `
+                <div class="dinamico" data-index="${index+1}">
+                    <article class="quest">
+                        <p class="sub" >
+                            Test ¿Estás preparada para la llegada de tu bebé?
+                        </p>
+                        <section class="container">
+                            <div class="question" data-index="${index}">
+                                ${pregunta.pregunta}
+                            </div>
+                            <div class="buttons">
+                                ${fnOpciones(pregunta.respuestas)}
+                            </div>
+                            <div class="answer hide">
+                                <p class="right">
+                                    Respuesta: <span class="right__text">
+                                        ${respuestaCorrecta(pregunta.respuestas)}
+                                    </span>
+                                </p>
+                                <p class="exp">
+                                    ${pregunta.explicacion}
+                                </p>
+                            </div>
+                        </section>
+                        <div class="numberCel">
+                            <span class="index">
+                                ${index + 1}
+                            </span>/${preguntas.lenght}</div>
+                        <button class="next"> Siguiente <img src="./src/assets/right-arrow.svg" alt="" class="arrow"> </button>
+                    </article>
+                    <figure class="image">
+                        <img src="${pregunta.urlImage}"
+                            alt="mujer embarazada" class="pic">
+                        <div class="number"><span class="index">${index + 1}</span>/10</div>
+                    </figure>
+                </div>
+            `
+        )
+        .reverse()
+        .join("")
+    /* Tuve que revertir el array debido a que cuando les doy posición absoluta a los elementos la pregunta 10 al ser la última en rederizarse pasa a ser la primera */
+
+/* Función encargada de renderizar en pantalla todos los elementos */
+const render = () => {
+    divRender.innerHTML = fnPreguntas()
+}
 
 /* Ejecución de funciones */
 render()
 
 
-/* Bloque de código para validar la respuesta correcta. Debe ejecutarse todo al final ya que hay que esperar que renderice todo primero */
+/*********** Bloque de código para validar la respuesta correcta. Debe ejecutarse todo al final ya que hay que esperar que renderice todo primero *******************/
 
 /* Llamado de elementos al DOM */
 const options = document.querySelectorAll('.options')
 
-/* Función */
 
+/* Funciones */
 /* Función para buscar padre */
-const buscarPadre = (respuesta) => {
-    return respuesta.closest('.dinamico')
-}
+const buscarPadre = (respuesta) => respuesta.closest('.dinamico')
 
 /* Función mostrar respuesta */
 const mostrarRespuesta = (respuesta) => {
@@ -364,6 +377,7 @@ const noHayRespuestas = (options) => {
 
 /* Función para validar si la respuesta es correcta o no */
 let contadorRespuestasCorrectas = 0
+const calculoPorcentaje = () => contadorRespuestasCorrectas*preguntas.length
 
 const validarRespuesta = (e) => {
     const respuesta = e.target
@@ -403,7 +417,30 @@ options.forEach(option => {
 })
 
 
-/* Bloque de código para pasar a la siguiente pregunta */
+/************* Bloque de código para medir la barra de progreso ***************/
+
+const numero = document.getElementById('numero')
+const barraProgreso = ( ) => {
+    const progressValue = document.getElementById('progressValue')
+    progressValue.style.transition = "all 2s ease-out"
+    progressValue.style.width = `${calculoPorcentaje()}%`
+}
+
+const numeroProgreso= (current, target) => {
+    numero.innerText = `${current}%`;
+
+    if (current === target) return;
+
+    setTimeout(() => {
+        numeroProgreso(current + 1, target);
+    }, 30);
+};
+
+
+
+
+
+/********************  Bloque de código para pasar a la siguiente pregunta ****************/
 
 /* Obtener objetos de uso global del DOM */
 const btnsSiguiente = document.querySelectorAll('.next')
@@ -431,7 +468,7 @@ const siguientePregunta = (e) => {
             }, 500)
             setTimeout(()=>{
                 barraProgreso()
-                lifeChanger(0, (contadorRespuestasCorrectas*10))
+                numeroProgreso(0, calculoPorcentaje())
             }, 500)
 
             setTimeout(()=>{
@@ -439,9 +476,7 @@ const siguientePregunta = (e) => {
             }, 1500)
         }else{
             siguiente.classList.add('show')
-
         }
-
     }else{
         swal('¡Espera!', 'Debes responder la pregunta', 'warning')
     }
@@ -454,7 +489,7 @@ btnsSiguiente.forEach(btn => {
 
 
 
-/* Este bloque de texto inicia el test, es el intro */
+/***************** Este bloque de texto inicia el test, es el intro ****************/
 
 /* Elementos globales del DOM */
 const btnInicio = document.getElementById('btnInicio')
@@ -469,37 +504,20 @@ btnInicio.addEventListener('click', () => {
 
     const dinamico = document.querySelectorAll('.dinamico')
     dinamico[dinamico.length-1].classList.add('show')
-    // dinamico.forEach(dim => {
-    //     dim.classList.add('show')
-    // })
 })
 
 
-/* Bloque de código para medir la barra de progreso */
 
-const numero = document.getElementById('numero')
-const barraProgreso = ( ) => {
-    const progressValue = document.getElementById('progressValue')
-    progressValue.style.transition = "all 2s ease-out"
-    progressValue.style.width = `${contadorRespuestasCorrectas*10}%`
-}
-
-const lifeChanger = (current, target) => {
-    numero.innerText = `${current}%`;
-
-    if (current === target) return;
-
-    setTimeout(() => {
-        lifeChanger(current + 1, target);
-    }, 30);
-};
 
 
 /* Bloque de codigo que vuelve al inicio */
 const volver = document.getElementById('volver')
 volver.addEventListener('click', ()=>{
-    window.reload()
+    location.reload()
 })
+
+
+
 
 
 
