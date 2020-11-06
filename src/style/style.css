@@ -197,8 +197,8 @@ body {
 }
 .hideQuestion {
 	opacity: 0;
-	transform: translateX(50%);
-	transition: all 0.5s ease-in-out;
+	transform: translateX(5%);
+	transition: all 0.2s ease-in-out;
 }
 
 /* Clases intro */
@@ -377,4 +377,119 @@ body {
 .showResultado {
 	opacity: 1;
 	transition: all 1s ease-in-out;
+}
+.logoResultado {
+	padding: 0;
+}
+.progress {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 90%;
+	flex-direction: column;
+}
+.textProgress {
+	font-size: 20px;
+	margin-bottom: 20px;
+	color: var(--main-color);
+}
+.numero {
+	margin-left: 20px;
+	color: white;
+	background-color: var(--main-color);
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	position: relative;
+	display: block;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+}
+.barraResultado {
+	width: 80%;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+	.image {
+		display: none;
+	}
+	.buttons {
+		flex-direction: column;
+	}
+	.options {
+		width: 95%;
+		margin: 5px 0;
+	}
+	.introQuest {
+		padding: 0;
+	}
+	.introPregunta {
+		padding-left: 0;
+		text-align: center;
+	}
+	.introQuest {
+		align-items: center;
+	}
+	.introTexto,
+	.logo {
+		padding-left: 0;
+	}
+	.btnIntro {
+		margin-left: 0;
+	}
+	.quest {
+		width: 100%;
+		padding: 20px;
+	}
+	.resultado {
+		padding: 10px;
+	}
+	.bg {
+		padding: 20px 10px;
+	}
+	.logo {
+		margin-bottom: 0;
+	}
+	.despedida {
+		font-size: 38px;
+		text-align: center;
+	}
+	.btnResultado {
+		flex-direction: column;
+	}
+	.link1,
+	.link2 {
+		width: 100%;
+		text-align: center;
+		font-size: 14px;
+	}
+	.numero {
+		margin-left: 0;
+		width: 50px;
+		height: 50px;
+		position: relative;
+		display: block;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-top: 20px;
+	}
+	.progress {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 90%;
+	}
+	.textProgress {
+		font-size: 20px;
+		margin-bottom: 20px;
+		color: var(--main-color);
+	}
+	.barraResultado {
+		width: 100%;
+	}
 }

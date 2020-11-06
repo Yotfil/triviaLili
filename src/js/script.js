@@ -277,24 +277,24 @@ const fnPreguntas = () => {
         let infoPreguntas = `
             <div class="dinamico" data-index="${index+1}">
                 <div class="quest">
-                <p class="sub" >Test ¿Estás preparada para la llegada de tu bebé?</p>
-                <div class="container">
-                    <div class="question" data-index="${index}">${pregunta.pregunta}</div>
-                    <div class="buttons">
-                    ${fnOpciones(pregunta.respuestas)}
+                    <p class="sub" >Test ¿Estás preparada para la llegada de tu bebé?</p>
+                    <div class="container">
+                        <div class="question" data-index="${index}">${pregunta.pregunta}</div>
+                        <div class="buttons">
+                        ${fnOpciones(pregunta.respuestas)}
+                        </div>
+                        <div class="answer hide">
+                            <p class="right">Respuesta: <span class="right__text">${respuestaCorrecta(pregunta.respuestas)}</span></p>
+                            <p class="exp">${pregunta.explicacion}</p>
+                        </div>
                     </div>
-                    <div class="answer hide">
-                        <p class="right">Respuesta: <span class="right__text">${respuestaCorrecta(pregunta.respuestas)}</span></p>
-                        <p class="exp">${pregunta.explicacion}</p>
-                    </div>
+                    <button class="next"> Siguiente <img src="./src/assets/right-arrow.svg" alt="" class="arrow"> </button>
                 </div>
-                <button class="next"> Siguiente <img src="./src/assets/right-arrow.svg" alt="" class="arrow"> </button>
-            </div>
-            <div class="image">
-                <img src="${pregunta.urlImage}"
-                    alt="mujer embarazada" class="pic">
-                <div class="number"><span class="index">${index + 1}</span>/10</div>
-            </div>
+                <div class="image">
+                    <img src="${pregunta.urlImage}"
+                        alt="mujer embarazada" class="pic">
+                    <div class="number"><span class="index">${index + 1}</span>/10</div>
+                </div>
             </div>
         `
     return infoPreguntas
@@ -362,7 +362,7 @@ const noHayRespuestas = (options) => {
 }
 
 /* Función para validar si la respuesta es correcta o no */
-let contadorRespuestasCorrectas = 5
+let contadorRespuestasCorrectas = 0
 
 const validarRespuesta = (e) => {
     const respuesta = e.target
@@ -428,7 +428,9 @@ const siguientePregunta = (e) => {
             setTimeout(()=>{
                 resultado.classList.add('showResultado')
             }, 500)
-            moverContador = true
+            setTimeout(()=>{
+                animateprogress(contadorRespuestasCorrectas*10);
+            }, 1500)
         }else{
             siguiente.classList.add('show')
 
@@ -475,7 +477,7 @@ btnInicio.addEventListener('click', () => {
 
 
 
-        animateprogress(contadorRespuestasCorrectas*10);
+
 
 
 
