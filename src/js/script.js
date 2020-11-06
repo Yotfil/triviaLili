@@ -430,7 +430,12 @@ const siguientePregunta = (e) => {
                 resultado.classList.add('showResultado')
             }, 500)
             setTimeout(()=>{
-                animateprogress(contadorRespuestasCorrectas*10);
+                barraProgreso()
+                lifeChanger(0, (contadorRespuestasCorrectas*10))
+            }, 500)
+
+            setTimeout(()=>{
+
             }, 1500)
         }else{
             siguiente.classList.add('show')
@@ -470,49 +475,40 @@ btnInicio.addEventListener('click', () => {
 })
 
 
+/* Bloque de código para medir la barra de progreso */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-function animateprogress (val){
-
-
-    var getRequestAnimationFrame = function () {  /* <------- Declaro getRequestAnimationFrame intentando obtener la máxima compatibilidad con todos los navegadores */
-        return window.requestAnimationFrame ||
-        window.webkitRequestAnimationFrame ||
-        window.mozRequestAnimationFrame ||
-        window.oRequestAnimationFrame ||
-        window.msRequestAnimationFrame ||
-        function ( callback ){
-            window.setTimeout(enroute, 1 / 60 * 1000);
-        };
-
-    };
-
-    var fpAnimationFrame = getRequestAnimationFrame();   /* <--- Declaro una instancia de getRequestAnimationFrame para llamar a la función animación */
-    var i = 0;
-    var animacion = function () {
-
-    if (i<=val)
-        {
-            document.getElementById("resultados").setAttribute("value",i);      /* <----  Incremento el valor de la barra de progreso */
-            document.getElementById("numero").innerHTML = i+"%";     /* <---- Incremento el porcentaje y lo muestro en la etiqueta span */
-            i++;
-            fpAnimationFrame(animacion);          /* <------------------ Mientras que el contador no llega al porcentaje fijado la función vuelve a llamarse con fpAnimationFrame     */
-        }
-
-    }
-
-        fpAnimationFrame(animacion);   /*  <---- Llamo la función animación por primera vez usando fpAnimationFrame para que se ejecute a 60fps  */
-
+const numero = document.getElementById('numero')
+const barraProgreso = ( ) => {
+    const progressValue = document.getElementById('progressValue')
+    progressValue.style.transition = "all 2s ease-out"
+    progressValue.style.width = `${contadorRespuestasCorrectas*10}%`
 }
+
+const lifeChanger = (current, target) => {
+    numero.innerText = `${current}%`;
+
+    if (current === target) return;
+
+    setTimeout(() => {
+        lifeChanger(current + 1, target);
+    }, 30);
+};
+
+
+/* Bloque de codigo que vuelve al inicio */
+const volver = document.getElementById('volver')
+volver.addEventListener('click', ()=>{
+    window.reload()
+})
+
+
+
+
+
+
+
+
+
+
+
+

@@ -289,6 +289,8 @@ body {
 .despedida {
 	font-size: 48px;
 	margin: 50px 0;
+	font-family: "Pacifico", cursive;
+	color: var(--main-color);
 }
 .resultadoTexto {
 	padding: 0;
@@ -419,6 +421,18 @@ body {
 }
 .barraResultado {
 	width: 80%;
+}
+.progressBar {
+	width: 80%;
+	height: 25px;
+	border: 1px solid var(--main-color);
+	border-radius: 20px;
+}
+.progressValue {
+	border-radius: 20px;
+	width: 0;
+	height: 99%;
+	background-color: var(--main-color);
 }
 
 /* Media Queries */
