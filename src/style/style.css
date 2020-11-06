@@ -45,6 +45,16 @@ body {
 	justify-content: center;
 	padding: 50px;
 	box-shadow: 0 4px 10px gray;
+	position: relative;
+}
+.numberCel {
+	background-color: #ffffffba;
+	position: absolute;
+	bottom: 50px;
+	left: 20px;
+	padding: 10px 20px;
+	border-radius: 50px;
+	display: none;
 }
 .sub {
 	align-self: flex-start;
@@ -413,6 +423,9 @@ body {
 
 /* Media Queries */
 @media screen and (max-width: 768px) {
+	.main {
+		padding-top: 0;
+	}
 	.image {
 		display: none;
 	}
@@ -491,5 +504,9 @@ body {
 	}
 	.barraResultado {
 		width: 100%;
+	}
+	.numberCel {
+		display: block;
+		bottom: 15px;
 	}
 }

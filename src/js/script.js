@@ -284,10 +284,11 @@ const fnPreguntas = () => {
                         ${fnOpciones(pregunta.respuestas)}
                         </div>
                         <div class="answer hide">
-                            <p class="right">Respuesta: <span class="right__text">${respuestaCorrecta(pregunta.respuestas)}</span></p>
-                            <p class="exp">${pregunta.explicacion}</p>
+                        <p class="right">Respuesta: <span class="right__text">${respuestaCorrecta(pregunta.respuestas)}</span></p>
+                        <p class="exp">${pregunta.explicacion}</p>
                         </div>
-                    </div>
+                        </div>
+                    <div class="numberCel"><span class="index">${index + 1}</span>/10</div>
                     <button class="next"> Siguiente <img src="./src/assets/right-arrow.svg" alt="" class="arrow"> </button>
                 </div>
                 <div class="image">
