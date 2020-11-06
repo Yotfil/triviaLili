@@ -323,7 +323,7 @@ const fnPreguntas = () =>
                     <figure class="image">
                         <img src="${pregunta.urlImage}"
                             alt="mujer embarazada" class="pic">
-                        <div class="number"><span class="index">${index + 1}</span>/10</div>
+                        <div class="number"><span class="index">${index + 1}</span>/${preguntas.length}</div>
                     </figure>
                 </div>
             `
