@@ -242,6 +242,21 @@ const preguntas =[
     },
 ]
 
+const valoresRespuestas = [
+    {
+        opcion: "Aún te falta prepararte para la llegada de tu bebé! resuelve muchas dudas en mis videotutoriales, blogs y/o podcast. Tambien puedes agendar una consulta para seguir aprendiendo.",
+        puntaje: [0, 1, 2, 3]
+    },
+    {
+        opcion: "Estas informada pero aún te falta repasar algunos temas para la llegada de tu bebé. Encuentra en mis videotutoriales, blogs y/o podcast toda la información ideal para estar 100% lista!",
+        puntaje: [4, 5, 6, 7]
+    },
+    {
+        opcion: "Felicitaciones! estas lista para el primer paso con tu bebé! una excelente nutrición y crear lazos fuertes es indispensable estos primeros 5 días! Puedes complementar esta información con los podcast, blogs y/o videotutoriales en mi página, para que sepas que viene después en el camino de la lactancia materna!",
+        puntaje: [8, 9, 10]
+    }
+]
+
 /*********************** Bloque de código para renderizar las preguntas  ********************/
 
 /* Llamados a los objetos del DOM, de uso global */
@@ -317,7 +332,7 @@ const fnPreguntas = () =>
                         <div class="numberCel">
                             <span class="index">
                                 ${index + 1}
-                            </span>/${preguntas.lenght}</div>
+                            </span>/${preguntas.length}</div>
                         <button class="next"> Siguiente <img src="./src/assets/right-arrow.svg" alt="" class="arrow"> </button>
                     </article>
                     <figure class="image">
@@ -470,10 +485,9 @@ const siguientePregunta = (e) => {
                 barraProgreso()
                 numeroProgreso(0, calculoPorcentaje())
             }, 500)
-
             setTimeout(()=>{
-
-            }, 1500)
+                cargarResultadoTexto()
+            }, 1000)
         }else{
             siguiente.classList.add('show')
         }
@@ -505,6 +519,23 @@ btnInicio.addEventListener('click', () => {
     const dinamico = document.querySelectorAll('.dinamico')
     dinamico[dinamico.length-1].classList.add('show')
 })
+
+
+/* Bloque de código para mostrar las respuestas */
+const resultadoTexto = document.getElementById('resultadoTexto')
+
+const cargarResultadoTexto = function () {
+
+    valoresRespuestas.forEach(respuesta => {
+        respuesta.puntaje.forEach(puntaje => {
+            if(puntaje == contadorRespuestasCorrectas){
+                resultadoTexto.innerText = respuesta.opcion
+            }
+        })
+    })
+}
+
+
 
 
 

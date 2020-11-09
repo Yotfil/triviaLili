@@ -473,6 +473,9 @@ body {
 	.logo {
 		padding-left: 0;
 	}
+	.introTexto {
+		text-align: center;
+	}
 	.btnIntro {
 		margin-left: 0;
 	}
